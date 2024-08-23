@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +13,30 @@ namespace DataStructers
         static void Main(string[] args)
         {
             Teachers t1 = new Teachers(1234567, "Atıl", "Samancıoğlu", true);
+            Teachers t2 = new Teachers(12347, "Tuncay", "Çelikkanat", true);
+            Teachers t3 = new Teachers(123, "Tunci", "Çelikkanat", true);
+            Teachers t4 = new Teachers(12, "Tunkey", "Çelikkanat", true);
 
-            Console.WriteLine(t1);
+            List <Teachers> teacherList = new List<Teachers>() { t1, t2, t3, t4 };
+            Console.WriteLine("List 1:");
+            teacherList.ForEach(t => Console.WriteLine(t));
+            Console.WriteLine(new String('-',30));
+
+            Console.WriteLine("List 2:");
+            var teacherList2 = teacherList;
+            teacherList2.ForEach(t => Console.WriteLine(t));
+            Console.WriteLine(new String('-', 30));
+
+            //value type or reference type => referance type
+            teacherList2.Add(new Teachers(431,"New","Item",false));
+            Console.WriteLine("\nNew Item added teacherList2:");
+
+            Console.WriteLine("List 1:");
+            teacherList.ForEach(t => Console.WriteLine(t));
+            Console.WriteLine(new String('-', 30));
+
+            Console.WriteLine("List 2:");
+            teacherList2.ForEach(t => Console.WriteLine(t));
 
             //shortcut -> ctrl + shift + v , possible items on board
             Console.ReadLine();
@@ -31,7 +54,7 @@ namespace DataStructers
 
             studentList.ForEach(s => Console.WriteLine(s));
 
-            //value type or reference type
+            //value type or reference type => value type
             var s1 = new Student(11, "Tuncii", "Cek");
             var s2 = new Student();
             s2 = s1;

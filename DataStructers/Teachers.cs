@@ -14,13 +14,12 @@ namespace DataStructers
         public bool Gender { get; set; }
 
         
-        public Teachers(int id, string name, string surname, bool genber)
+        public Teachers(int id, string name, string surname, bool gender)
         {
             this.id = id;
             this.Name = name;
             this.Surname = surname;
-            this.Gender = genber;
-            Console.WriteLine("Progressing\n");
+            this.Gender = gender;
         }
 
         public override string ToString()
