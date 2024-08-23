@@ -10,8 +10,17 @@ namespace DataStructers
     public class Program
     {
         static void Main(string[] args)
-        {   
+        {
+            Teachers t1 = new Teachers(1234567, "Atıl", "Samancıoğlu", true);
 
+            Console.WriteLine(t1);
+
+            //shortcut -> ctrl + shift + v , possible items on board
+            Console.ReadLine();
+        }
+
+        private static void students()
+        {
             var studentList = new List<Student>()
             {
                 new Student(10,"Tuncay","Celikkanat",true),
@@ -34,9 +43,6 @@ namespace DataStructers
             //foreach (var student in studentList) {
             //    Console.WriteLine(student);
             //}
-
-            //shortcut -> ctrl + shift + v , possible items on board
-            Console.ReadLine();
         }
 
         private static void lowerUpperLimits()
