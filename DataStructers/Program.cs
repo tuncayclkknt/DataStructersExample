@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -12,15 +14,99 @@ namespace DataStructers
     {
         static void Main(string[] args)
         {
+            
+            S
+
+
+            //shortcut -> ctrl + shift + v , possible items on board
+            Console.ReadLine();
+        }
+
+        private static void HashtableApp()
+        {
+            //HASTABLE APP
+            //Read title
+            Console.WriteLine("Enter a title:");
+            string title = Console.ReadLine().ToLower();//all of lower cases
+
+            //hashtable
+            var charSet = new Hashtable()
+            {
+                {'ç','c'},
+                {'ğ','g'},
+                {'ı','i'},
+                {'ö','o'},
+                {'ş','s'},
+                {'ü','u'},
+                {' ','-'},
+                {'\'','-'},
+                {'.','-'}
+            };
+
+            foreach (DictionaryEntry item in charSet)
+            {
+                title = title.Replace((char)item.Key, (char)item.Value);
+            }
+
+            Console.WriteLine(title);
+        }
+
+        private static void HashtableIntro()
+        {
+            /* Hashtable
+                         * System.Collection
+                         * non-generic -> object -> boxing/unboxing
+                         * indexing is not excist
+                         * key-value pairs
+                         * key-value -> ICollection Interface
+                         * ConteinKey
+                         * ConteinValue
+                         */
+
+            var cities = new Hashtable();
+            cities.Add(06, "Ankara");
+            cities.Add(38, "Kayseri");
+            cities.Add(34, "İstanbul");
+            cities.Add(55, "Elazığ");
+
+            foreach (DictionaryEntry c in cities)
+                Console.WriteLine($"{c.Key,-5} - {c.Value,10}");
+
+
+            //Access the keys
+            Console.WriteLine("\nKeys:");
+            var keys = cities.Keys;
+            foreach (var key in keys)
+                Console.WriteLine(key);
+
+            Console.WriteLine("\nValues:");
+            ICollection values = cities.Values;
+
+            foreach (var value in values)
+                Console.WriteLine(value);
+
+            //Access to any specific item
+            Console.WriteLine("\nAccess to any specific item:");
+            Console.WriteLine(cities[55]);
+
+            //Remove item
+            Console.WriteLine("\nRemoving");
+            cities.Remove(55);
+            foreach (DictionaryEntry c in cities)
+                Console.WriteLine($"{c.Key,-5} - {c.Value,10}");
+        }
+
+        private static void Teachers()
+        {
             Teachers t1 = new Teachers(1234567, "Atıl", "Samancıoğlu", true);
             Teachers t2 = new Teachers(12347, "Tuncay", "Çelikkanat", true);
             Teachers t3 = new Teachers(123, "Tunci", "Çelikkanat", true);
             Teachers t4 = new Teachers(12, "Tunkey", "Çelikkanat", true);
 
-            List <Teachers> teacherList = new List<Teachers>() { t1, t2, t3, t4 };
+            List<Teachers> teacherList = new List<Teachers>() { t1, t2, t3, t4 };
             Console.WriteLine("List 1:");
             teacherList.ForEach(t => Console.WriteLine(t));
-            Console.WriteLine(new String('-',30));
+            Console.WriteLine(new String('-', 30));
 
             Console.WriteLine("List 2:");
             var teacherList2 = teacherList;
@@ -28,7 +114,7 @@ namespace DataStructers
             Console.WriteLine(new String('-', 30));
 
             //value type or reference type => referance type
-            teacherList2.Add(new Teachers(431,"New","Item",false));
+            teacherList2.Add(new Teachers(431, "New", "Item", false));
             Console.WriteLine("\nNew Item added teacherList2:");
 
             Console.WriteLine("List 1:");
@@ -37,9 +123,6 @@ namespace DataStructers
 
             Console.WriteLine("List 2:");
             teacherList2.ForEach(t => Console.WriteLine(t));
-
-            //shortcut -> ctrl + shift + v , possible items on board
-            Console.ReadLine();
         }
 
         private static void students()
