@@ -22,6 +22,25 @@ namespace DataStructers
             Console.ReadLine();
         }
 
+        private static void SortedListApp()
+        {
+            //Sortedlist App
+            var bookContent = new SortedList()
+            {
+                {1,"Preface" },
+                {50,"OOP" },
+                {40,"Loops" },
+                {35,"Math" },
+                {60,"Martix" }
+            };
+            Console.WriteLine("Contents");
+            Console.WriteLine(new string('-', 30));
+            Console.WriteLine($"{"Contents",-20} {"Pages",5}\n");
+
+            foreach (DictionaryEntry book in bookContent)
+                Console.WriteLine($"{book.Value,-20} {book.Key,5}");
+        }
+
         private static void SortedListIntro()
         {
             /* SORTEDLIST
