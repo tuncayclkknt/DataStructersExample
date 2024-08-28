@@ -15,11 +15,74 @@ namespace DataStructers
         static void Main(string[] args)
         {
             
-            S
+
 
 
             //shortcut -> ctrl + shift + v , possible items on board
             Console.ReadLine();
+        }
+
+        private static void SortedListIntro()
+        {
+            /* SORTEDLIST
+                         * System.Collection
+                         * non-generic(object)
+                         * key-value pairs
+                         * keys sorteable
+                         * indexing is exist
+                         * IndexOfKey - IndexOfValue 
+                         * getKey - getValue - getByIndex 
+                         * DictionaryEntry
+                         * ICompareable
+                         */
+
+            var list = new SortedList()
+            {
+                {1,"One"},
+                {3,"Three" },
+                {8,"Eight" },
+                {4,"Four" },
+                {6,"Six" },
+                {7,"Seven" },
+                {5,"Five" }
+            };
+            list.Add(2, "Two");
+
+            foreach (DictionaryEntry item in list)
+                Console.WriteLine($"{item.Key,3}, {item.Value,5}");
+
+            Console.WriteLine("Features:");
+            Console.WriteLine("Length of list   : {0}", list.Count);
+            Console.WriteLine("Capacity of list : {0}", list.Capacity);
+            list.TrimToSize();
+            Console.WriteLine("Capacity of list : {0}", list.Capacity);
+            Console.WriteLine(new string('-', 25));
+
+            //Access with key
+            Console.WriteLine(list[4]);
+            //with index
+            Console.WriteLine(list.GetByIndex(0));
+            //get key
+            Console.WriteLine(list.GetKey(0)); //0th index
+            //last item value
+            Console.WriteLine(list.GetByIndex(list.Count - 1));
+
+            var keys = list.Keys;
+            Console.WriteLine("\nKeys:");
+            foreach (var key in keys)
+                Console.WriteLine(key);
+
+            var values = list.Values;
+            Console.WriteLine("\nValues:");
+            foreach (var value in values)
+                Console.WriteLine(value);
+
+            if (list.Contains(1))
+                list[1] = "Bir";
+            list.Remove(4);
+
+            foreach (DictionaryEntry item in list)
+                Console.WriteLine($"{item.Key,3}, {item.Value,5}");
         }
 
         private static void HashtableApp()
@@ -54,14 +117,14 @@ namespace DataStructers
         private static void HashtableIntro()
         {
             /* Hashtable
-                         * System.Collection
-                         * non-generic -> object -> boxing/unboxing
-                         * indexing is not excist
-                         * key-value pairs
-                         * key-value -> ICollection Interface
-                         * ConteinKey
-                         * ConteinValue
-                         */
+            * System.Collection
+            * non-generic -> object -> boxing/unboxing
+            * indexing is not excist
+            * key-value pairs
+            * key-value -> ICollection Interface
+            * ConteinKey
+            * ConteinValue
+            */
 
             var cities = new Hashtable();
             cities.Add(06, "Ankara");
