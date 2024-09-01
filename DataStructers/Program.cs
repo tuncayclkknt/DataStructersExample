@@ -10,12 +10,57 @@ using System.Threading.Tasks;
 namespace DataStructers
 {
 
+    public class City : IComparable<City>
+    {
+        public City(int plakaNo, string cityName)
+        {
+            PlakaNo = plakaNo;
+            this.cityName = cityName;
+        }
+
+        public int PlakaNo { get; set; }
+        public string cityName { get; set; }
+
+        public int CompareTo(City other)
+        {
+            if (this.PlakaNo < other.PlakaNo) return -1;
+            else if (this.PlakaNo == other.PlakaNo) return 0;
+            else return 1;
+        }
+
+        public override string ToString()
+        {
+            return $"{PlakaNo, -5} {cityName,-5}";
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)
         {
-            
+            /* List<T>
+             * System.Collection.Generic
+             * Array -> ArrayList(object) -> List<T> -> Type
+             * Add(), AddRange(), Count(), Capacity(), Remove()...
+             * Interface -> Inheritance
+             * C# -> class(inheritance)
+             *    -> interface inheritance
+             */
 
+            var numbers = new List<int>() { 100,53,12,24,45,56,67,78,89};
+            numbers.Sort();
+            numbers.ForEach(n => Console.WriteLine(n));
+            Console.WriteLine();
+
+            var cities = new List<City>()
+            {
+                new City(38,"Kayseri"),
+                new City(6,"Ankara"),
+                new City(34,"Istanbul"),
+                new City(44,"Malatya")
+            };
+            cities.Sort();
+            cities.ForEach(c => Console.WriteLine(c));
 
 
             //shortcut -> ctrl + shift + v , possible items on board
@@ -44,16 +89,16 @@ namespace DataStructers
         private static void SortedListIntro()
         {
             /* SORTEDLIST
-                         * System.Collection
-                         * non-generic(object)
-                         * key-value pairs
-                         * keys sorteable
-                         * indexing is exist
-                         * IndexOfKey - IndexOfValue 
-                         * getKey - getValue - getByIndex 
-                         * DictionaryEntry
-                         * ICompareable
-                         */
+             * System.Collection
+             * non-generic(object)
+             * key-value pairs
+             * keys sorteable
+             * indexing is exist
+             * IndexOfKey - IndexOfValue 
+             * getKey - getValue - getByIndex 
+             * DictionaryEntry
+             * ICompareable
+             */
 
             var list = new SortedList()
             {
