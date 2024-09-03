@@ -38,7 +38,26 @@ namespace DataStructers
     {
         static void Main(string[] args)
         {
-            
+
+            Console.WriteLine("Enter a integer number: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            var numberStack = new Stack<int>();
+
+            while (number > 0) { 
+                int k = number%10;
+                numberStack.Push(k);
+                number = number/10;
+            }
+
+            int i = 0;
+            int n = numberStack.Count - 1;
+            foreach (var s in numberStack)
+            {
+                Console.WriteLine($"{s} x " +
+                    $"{Math.Pow(10,n - i),7} = " +
+                    $"{s*Math.Pow(10,n - i),7}");
+                i++;
+            }
 
 
             //shortcut -> ctrl + shift + v , possible items on board
