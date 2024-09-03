@@ -38,16 +38,77 @@ namespace DataStructers
     {
         static void Main(string[] args)
         {
-            /* List<T>
-             * System.Collection.Generic
-             * Array -> ArrayList(object) -> List<T> -> Type
-             * Add(), AddRange(), Count(), Capacity(), Remove()...
-             * Interface -> Inheritance
-             * C# -> class(inheritance)
-             *    -> interface inheritance
-             */
+            
 
-            var numbers = new List<int>() { 100,53,12,24,45,56,67,78,89};
+
+            //shortcut -> ctrl + shift + v , possible items on board
+            Console.ReadLine();
+        }
+
+        private static void StackExample1()
+        {
+            var charStack2 = new Stack<char>();
+            for (int i = 65; i < 91; i++)
+            {
+                charStack2.Push((char)i);
+                Console.WriteLine($"{charStack2.Peek()} added to stack2.");
+                Console.WriteLine($"Count: {charStack2.Count}");
+            }
+            Console.WriteLine(new string('-', 30));
+
+            while (charStack2.Count > 0)
+            {
+                Console.WriteLine($"{charStack2.Pop()} removed from stack2.");
+                Console.WriteLine($"Count: {charStack2.Count}");
+            }
+
+            //Additional info
+            var array = charStack2.ToArray();
+        }
+
+        private static void stackIntro()
+        {
+            /*Stack <T>
+                         * System.Collection.Generic
+                         * T -> Type -> Stack<int>, Stack<string>
+                         * Last-In First-Out -> LIFO
+                         * push()
+                         * pop()
+                         * peek()
+                         * clear()
+                         * count()
+                         * toArray()
+                         * Calling func, recurtive
+                         * Example: last used apps
+                         */
+
+            var charStack = new Stack<char>();
+            //Add item
+            charStack.Push('A');
+            Console.WriteLine(charStack.Peek());
+            charStack.Push('B');
+            Console.WriteLine(charStack.Peek());
+            charStack.Push('C');
+            Console.WriteLine(charStack.Peek());
+
+            //Remove
+            Console.WriteLine(charStack.Pop() + " popped on stack.");
+            Console.WriteLine(charStack.Pop() + " popped on stack.");
+            Console.WriteLine(charStack.Pop() + " popped on stack.");
+        }
+
+        private static void ListIntro()
+        {
+            /* List<T>
+                         * System.Collection.Generic
+                         * Array -> ArrayList(object) -> List<T> -> Type
+                         * Add(), AddRange(), Count(), Capacity(), Remove()...
+                         * Interface -> Inheritance
+                         * C# -> class(inheritance)
+                         *    -> interface inheritance
+                         */
+
+            var numbers = new List<int>() { 100, 53, 12, 24, 45, 56, 67, 78, 89 };
             numbers.Sort();
             numbers.ForEach(n => Console.WriteLine(n));
             Console.WriteLine();
@@ -61,10 +122,6 @@ namespace DataStructers
             };
             cities.Sort();
             cities.ForEach(c => Console.WriteLine(c));
-
-
-            //shortcut -> ctrl + shift + v , possible items on board
-            Console.ReadLine();
         }
 
         private static void SortedListApp()
