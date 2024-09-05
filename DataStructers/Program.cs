@@ -39,14 +39,102 @@ namespace DataStructers
         static void Main(string[] args)
         {
 
+            var vowelLetter = new List<char>()
+            {
+                'a','e','ı','i','u','ü','o','ö'
+            };
+
+            ConsoleKeyInfo choice;
+            var queue = new Queue<char>();
+
+            foreach (char ch in vowelLetter) 
+            {
+                Console.WriteLine($"Add \"{ch}\" to queue? [y/n] ");
+                choice = Console.ReadKey();
+                Console.WriteLine();
+
+                if (choice.Key == ConsoleKey.Y)
+                {
+                    queue.Enqueue(ch);
+                    Console.WriteLine($"\n\"{ch}\" added to queue.");
+                    Console.WriteLine($"Number of items on queue: {queue.Count}\n");
+                }
+                else if (choice.Key == ConsoleKey.N)
+                {
+                    Console.WriteLine($"\n\"{ch}\" did not added to queue.");
+                    Console.WriteLine($"Number of items on queue: {queue.Count}\n");
+                }
+            }
+
+            Console.WriteLine("\nAdding to queue is completed.");
+            Console.WriteLine("If you want to delete any item in queue, " +
+                "\nplease enter Esc.");
+            choice = Console.ReadKey(true);
+
+            if (choice.Key == ConsoleKey.Escape)
+            {
+                while (queue.Count > 0)
+                {
+                    Console.WriteLine($"\n\"{queue.Dequeue()}\" is removed from queue.");
+                    Console.WriteLine($"Number of items on queue: {queue.Count}\n");
+                }
+                Console.WriteLine("\nRemoving to queue is completed.");
+            }
+            Console.WriteLine("\nProgram ended.");
+
+
+            //shortcut -> ctrl + shift + v , possible items on board
+            Console.ReadLine();
+        }
+
+        private static void QueueIntro()
+        {
+                         /*Queue
+                         * System.Collection.Generic
+                         * T -> Type
+                         * First-In First-Out -> FIFO
+                         * Enqueu (adding items)
+                         * Dequeu (removing items)
+                         * Peek(), Count(), Clear()
+                         */
+
+            var charQue = new Queue<char>();
+            charQue.Enqueue('a');
+            charQue.Enqueue('e');
+            charQue.Enqueue('i');
+            charQue.Enqueue('o');
+            charQue.Enqueue('u');
+
+            foreach (char c in charQue)
+            {
+                Console.WriteLine(c);
+            }
+            Console.WriteLine($"\nNumbers of items in queue: {charQue.Count}");
+
+            var array = charQue.ToArray(); //char[2]
+
+            Console.WriteLine($"Removed item: {charQue.Dequeue()}\n");
+            //charQue.Dequeue();  //return a char
+
+            foreach (char c in charQue)
+            {
+                Console.WriteLine(c);
+            }
+            Console.WriteLine($"First item after removing: {charQue.Peek()}");
+            Console.WriteLine($"Numbers of items in queue: {charQue.Count}");
+        }
+
+        private static void StackExample2()
+        {
             Console.WriteLine("Enter a integer number: ");
             int number = Convert.ToInt32(Console.ReadLine());
             var numberStack = new Stack<int>();
 
-            while (number > 0) { 
-                int k = number%10;
+            while (number > 0)
+            {
+                int k = number % 10;
                 numberStack.Push(k);
-                number = number/10;
+                number = number / 10;
             }
 
             int i = 0;
@@ -54,14 +142,10 @@ namespace DataStructers
             foreach (var s in numberStack)
             {
                 Console.WriteLine($"{s} x " +
-                    $"{Math.Pow(10,n - i),7} = " +
-                    $"{s*Math.Pow(10,n - i),7}");
+                    $"{Math.Pow(10, n - i),7} = " +
+                    $"{s * Math.Pow(10, n - i),7}");
                 i++;
             }
-
-
-            //shortcut -> ctrl + shift + v , possible items on board
-            Console.ReadLine();
         }
 
         private static void StackExample1()
@@ -87,7 +171,7 @@ namespace DataStructers
 
         private static void stackIntro()
         {
-            /*Stack <T>
+                         /*Stack <T>
                          * System.Collection.Generic
                          * T -> Type -> Stack<int>, Stack<string>
                          * Last-In First-Out -> LIFO
@@ -118,7 +202,7 @@ namespace DataStructers
 
         private static void ListIntro()
         {
-            /* List<T>
+                         /* List<T>
                          * System.Collection.Generic
                          * Array -> ArrayList(object) -> List<T> -> Type
                          * Add(), AddRange(), Count(), Capacity(), Remove()...
@@ -164,17 +248,17 @@ namespace DataStructers
 
         private static void SortedListIntro()
         {
-            /* SORTEDLIST
-             * System.Collection
-             * non-generic(object)
-             * key-value pairs
-             * keys sorteable
-             * indexing is exist
-             * IndexOfKey - IndexOfValue 
-             * getKey - getValue - getByIndex 
-             * DictionaryEntry
-             * ICompareable
-             */
+                        /* SORTEDLIST
+                         * System.Collection
+                         * non-generic(object)
+                         * key-value pairs
+                         * keys sorteable
+                         * indexing is exist
+                         * IndexOfKey - IndexOfValue 
+                         * getKey - getValue - getByIndex 
+                         * DictionaryEntry
+                         * ICompareable
+                         */
 
             var list = new SortedList()
             {
@@ -256,15 +340,15 @@ namespace DataStructers
 
         private static void HashtableIntro()
         {
-            /* Hashtable
-            * System.Collection
-            * non-generic -> object -> boxing/unboxing
-            * indexing is not excist
-            * key-value pairs
-            * key-value -> ICollection Interface
-            * ConteinKey
-            * ConteinValue
-            */
+                        /* Hashtable
+                        * System.Collection
+                        * non-generic -> object -> boxing/unboxing
+                        * indexing is not excist
+                        * key-value pairs
+                        * key-value -> ICollection Interface
+                        * ConteinKey
+                        * ConteinValue
+                        */
 
             var cities = new Hashtable();
             cities.Add(06, "Ankara");
