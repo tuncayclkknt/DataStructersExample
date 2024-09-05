@@ -38,7 +38,85 @@ namespace DataStructers
     {
         static void Main(string[] args)
         {
+            LinkedListApp();
 
+
+            //shortcut -> ctrl + shift + v , possible items on board
+            Console.ReadLine();
+        }
+
+        private static void LinkedListApp()
+        {
+            /*LinkedList<T>
+                         * System.Collections.Generic
+                         * T -> Type
+                         * non-sorted
+                         * Next - Previous -> pointers
+                         * First - Last
+                         * AddFirst - AddLast
+                         * Remove, RemoveFirst, RemoveLast
+                         * AddBefore - AddAfter
+                         */
+
+            var cities = new LinkedList<string>();
+            // i'm in a travel and i will start with Ordu
+            cities.AddFirst("Ordu");
+
+            // i diceded to go first Trabzon,in this case, Ordu is not the first city.
+            cities.AddFirst("Trabzon");
+
+            // Istanbul is the last city i went
+            cities.AddLast("Istanbul");
+
+            // Trabzon -> Ordu -> Istanbul
+            //But i forget to write that i went Kayseri after Ordu.
+            cities.AddAfter(cities.Find("Ordu"), "Kayseri");
+
+            /* additionaly i added Ankara befor Kayseri but using another methot
+                Trabzon -> Ordu -> Kayseri -> Istanbul
+                    i will use .AddBefore(), i need a pointer that point Kayseri for this
+                cities.First.Next.Next <- that is the point i need 
+                ------------ ---- -----
+                  Trabzon    Ordu Kayseri    
+             */
+            cities.AddBefore(cities.First.Next.Next, "Ankara");
+
+            /*Trabzon -> Ordu -> Ankara -> Kayseri -> Istanbul
+                    i will add Sivas after Kayseri
+                for this i have more options like cities.Last.Previous
+                that points Kayseri
+             */
+            cities.AddAfter(cities.Last.Previous, "Sivas");
+
+            /* Trabzon -> Ordu -> Ankara -> Kayseri -> Sivas -> Istanbul
+             * i will add Antalya after Sivas */
+            cities.AddAfter(cities.Find("Sivas"), "Antalya");
+
+            //int i = 1;
+            //foreach (string c in cities) {
+            //    Console.WriteLine($"{i}. {c}");
+            //    i++;
+            //}
+
+            var item = cities.First;
+            Console.WriteLine("It's the going way:");
+            while (item != null)
+            {
+                Console.WriteLine(item.Value);
+                item = item.Next;
+            }
+
+            var item2 = cities.Last;
+            Console.WriteLine("\nIt's the returning way:");
+            while (item2 != null)
+            {
+                Console.WriteLine(item2.Value);
+                item2 = item2.Previous;
+            }
+        }
+
+        private static void QueueApp()
+        {
             var vowelLetter = new List<char>()
             {
                 'a','e','ı','i','u','ü','o','ö'
@@ -47,7 +125,7 @@ namespace DataStructers
             ConsoleKeyInfo choice;
             var queue = new Queue<char>();
 
-            foreach (char ch in vowelLetter) 
+            foreach (char ch in vowelLetter)
             {
                 Console.WriteLine($"Add \"{ch}\" to queue? [y/n] ");
                 choice = Console.ReadKey();
@@ -81,10 +159,6 @@ namespace DataStructers
                 Console.WriteLine("\nRemoving to queue is completed.");
             }
             Console.WriteLine("\nProgram ended.");
-
-
-            //shortcut -> ctrl + shift + v , possible items on board
-            Console.ReadLine();
         }
 
         private static void QueueIntro()
