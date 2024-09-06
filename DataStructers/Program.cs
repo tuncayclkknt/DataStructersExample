@@ -32,22 +32,96 @@ namespace DataStructers
         {
             return $"{PlakaNo, -5} {cityName,-5}";
         }
+
+        
+    }
+    public class Personel
+    {
+        public Personel(string name, string surname, decimal salary)
+        {
+            Name = name;
+            Surname = surname;
+            Salary = salary;
+        }
+
+        public int SicilNo { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public decimal Salary { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name,-8} {Surname,-12} {Salary,-5}";
+        }
     }
 
     public class Program
     {
         static void Main(string[] args)
         {
-            LinkedListApp();
+
+
 
 
             //shortcut -> ctrl + shift + v , possible items on board
             Console.ReadLine();
         }
 
+        private static void DictionaryApp()
+        {
+            var personelList = new Dictionary<int, Personel>()
+            {
+                {110, new Personel("Tuncay", "Çelikkanat", 41_000) },
+                {120, new Personel("Sena", "Yiğit", 35_000) }
+            };
+
+            personelList.Add(100, new Personel("Zeynep", "Bayraktar", 40_000));
+
+            foreach (var p in personelList) Console.WriteLine(p);
+        }
+
+        private static void DictionaryIntro()
+        {
+                        /* Dictionary<TKey, TValue>
+                         * System.Collections.Generic
+                         * T -> Type
+                         * TKey -> unique
+                         * TValue -> anything
+                         * More performans than HashTable
+                         */
+
+            var phoneCodes = new Dictionary<int, string>()
+            {
+                {332,"Konya" },
+                {424,"Elazığ" },
+                {466,"Art" }
+            };
+            phoneCodes.Add(322, "Adana");
+            phoneCodes.Add(212, "Istanbul");
+
+            //Access
+            phoneCodes[466] = "Artvin";
+
+            //ConteinsKey
+            if (!phoneCodes.ContainsKey(312))
+            {
+                Console.WriteLine("\aCod info is invalid.");
+                phoneCodes.Add(312, "Ankara");
+                Console.WriteLine("Ankara added with 312 code.");
+            }
+
+            //ConteinsValue
+            Console.WriteLine(phoneCodes.ContainsValue("Malatya"));
+
+            //Removing
+            phoneCodes.Remove(322);
+
+            foreach (var item in phoneCodes) Console.WriteLine(item);
+        }
+
         private static void LinkedListApp()
         {
-            /*LinkedList<T>
+                        /*LinkedList<T>
                          * System.Collections.Generic
                          * T -> Type
                          * non-sorted
