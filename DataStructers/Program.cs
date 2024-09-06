@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace DataStructers
 {
-
     public class City : IComparable<City>
     {
         public City(int plakaNo, string cityName)
@@ -62,11 +61,109 @@ namespace DataStructers
 
 
 
-
             //shortcut -> ctrl + shift + v , possible items on board
             Console.ReadLine();
         }
 
+        private static void SortedSetApp()
+        {
+            var numbers = new List<int>();
+            var r = new Random();
+
+            for (int i = 0; i <= 100; i++)
+            {
+                numbers.Add(r.Next(0, 10));
+                Console.Write($"{numbers[i]} ");
+            }
+            Console.WriteLine();
+
+            //Finding unique items
+            var uniqueItemsList = new SortedSet<int>(numbers);
+            Console.WriteLine("\nUnique items list.\n");
+
+            foreach (int item in uniqueItemsList)
+            {
+                Console.Write($"{item,-3}");
+            }
+            Console.WriteLine("\nThere are {0} unique items.", uniqueItemsList.Count);
+        }
+
+        private static void SortedSetIntro()
+        {
+            /*SortedSet<T>
+                         * System.Collection.Generic
+                         * T -> Type
+                         * items must be unique
+                         * sorting on addition
+                         * Add() -> boolean
+                         * if added item already in list, it returns false; otherways it returns true.
+                         * Remove(), RemoveWhere( predicate ) -> if
+                         * Dynamic capasity
+                         * it is a set and it can be union, intersection, exception, subset...
+                         * A.UnionWith(B) -> A u B
+                         * A.SymetricExceptWith(B) -> get the only A and only B
+                         * A.ExceptWith(B) -> A\B
+                         * A.IntersectWith(B) -> get the intersection
+                         */
+
+            var nameList = new SortedSet<string>()
+            {
+                "Zeynep",
+                "Dila",
+                "Kerem",
+                "Sena",
+                "Senanın arkadaşı"
+            };
+
+            if (nameList.Add("Tuncay"))
+            {
+                Console.WriteLine("Tuncay added.");
+            }
+
+            Console.WriteLine("{0}", nameList.Add("Zeynep") == true ?
+                "Zeynep added." : "Addition fail.");
+
+            nameList.Remove("Kerem");
+            nameList.RemoveWhere(value => value.Contains("S")); //starWith ...there are another methods like these.
+
+            Console.WriteLine("\nName List\n");
+            foreach (string name in nameList)
+            {
+                Console.WriteLine(name);
+            }
+            Console.WriteLine($"Items: {nameList.Count,-3}");
+        }
+
+        private static void SortedDirectoryApp()
+        {
+            /*SortedDirectory<TKey, TValue>
+             * whole methods in Directory
+             * TKey - TValue
+             * Less optimize than Directory because of sorting
+             * sort by TKey
+             */
+
+            var bookIndex = new SortedDictionary<string, List<int>>()
+            {
+                {"FTP", new List<int>{3,5,7 } },
+                {"ASP.NET", new List<int>{50,60 } },
+                {"HTML", new List<int>{8,10,12} },
+                {"CSS", new List<int>{70,80,90} },
+                {"jQuery", new List<int>{3,5,15} },
+                {"SQL", new List<int>{70,80} },
+            };
+
+            foreach (var book in bookIndex)
+            {
+                Console.Write($"{book.Key,-8},");
+                foreach (int v in book.Value)
+                {
+                    Console.Write($" {v}.");
+                }
+                Console.WriteLine();
+            }
+        }
+        
         private static void DictionaryApp()
         {
             var personelList = new Dictionary<int, Personel>()
