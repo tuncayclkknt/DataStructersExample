@@ -60,9 +60,78 @@ namespace DataStructers
         {
 
 
-
             //shortcut -> ctrl + shift + v , possible items on board
             Console.ReadLine();
+        }
+
+        private static void SortedSetApp2()
+        {
+            // SortedSet set operations
+            //var A = new SortedSet<int>() { 1,2,3,4};
+            var A = new SortedSet<int>(randomBullshitGo(4));
+            //var B = new SortedSet<int>() { 1,2,5,6};
+            var B = new SortedSet<int>(randomBullshitGo(7));
+
+
+            #region print
+            Console.WriteLine("Set A:");
+            foreach (var a in A) Console.Write($"{a,5}");
+
+            Console.WriteLine("\nSet B:");
+            foreach (var b in B) Console.Write($"{b,5}");
+            Console.WriteLine();
+            #endregion
+
+            #region Union
+            /*
+            A.UnionWith(B); //-> Set A = A.UnionWith(B) its mean that set a is changed with union of a and b
+            Console.WriteLine("Union of A and B.");
+            foreach (var a in A) Console.Write($"{a,5}");
+            Console.WriteLine("\nNumber of items: {0}", A.Count);
+            */
+            #endregion
+
+            #region Intersection
+            /*
+            A.IntersectWith(B);
+            Console.WriteLine("Intersection of A and B.");
+            foreach (var a in A) Console.Write($"{a,5}");
+            Console.WriteLine("\nNumber of items: {0}", A.Count);
+            */
+            #endregion
+
+            #region ExceptWith
+            /*
+            A.ExceptWith(B);
+            Console.WriteLine("Only A:");
+            foreach (var a in A) Console.Write($"{a,5}");
+            Console.WriteLine("\nNumber of items: {0}", A.Count);
+            */
+            #endregion
+
+            #region Symmetric Exception
+            /*
+            A.SymmetricExceptWith(B);
+            Console.WriteLine("Symmetric exception of A and B.");
+            foreach (var a in A) Console.Write($"{a,5}");
+            Console.WriteLine("\nNumber of items: {0}", A.Count);
+            */
+            #endregion
+
+            Console.WriteLine("\nA is subset of B?" +
+                "\n{0}", A.IsSubsetOf(B));
+
+            Console.WriteLine("\nB is subset of A?" +
+                "\n{0}", B.IsSubsetOf(A));
+        }
+
+        static List<int> randomBullshitGo(int n)
+        {
+            var list = new List<int>();
+            var r = new Random();
+            for (int i = 0; i < n; i++)
+                list.Add(r.Next(0,10));
+            return list;
         }
 
         private static void SortedSetApp()
@@ -90,7 +159,7 @@ namespace DataStructers
 
         private static void SortedSetIntro()
         {
-            /*SortedSet<T>
+                         /*SortedSet<T>
                          * System.Collection.Generic
                          * T -> Type
                          * items must be unique
@@ -120,7 +189,7 @@ namespace DataStructers
                 Console.WriteLine("Tuncay added.");
             }
 
-            Console.WriteLine("{0}", nameList.Add("Zeynep") == true ?
+            Console.WriteLine("\n{0}", nameList.Add("Zeynep") == true ?
                 "Zeynep added." : "Addition fail.");
 
             nameList.Remove("Kerem");
