@@ -64,6 +64,44 @@ namespace DataStructers
             Console.ReadLine();
         }
 
+        private static void hastSetIntro()
+        {
+                        /* HashSet<T>
+                         * System.Collections.Generic
+                         * T -> Type
+                         * Items unique
+                         * Non-sorted
+                         * Allows set operations
+                         */
+
+            var vowelLetter = new HashSet<char>()
+            {
+                'e','i','o','u','b'
+            };
+            vowelLetter.Add('a');
+
+            vowelLetter.Remove('b');
+            printCollection(vowelLetter);
+            Console.WriteLine();
+
+            var alphabet = new List<char>();
+            for (int i = 97; i < 123; i++)
+                alphabet.Add((char)i);
+            //alphabet.ForEach(k => Console.Write(k+" "));
+
+            printCollection(alphabet);
+        }
+
+        static void printCollection(IEnumerable collection) //IEnumerable is common feature with List and HashSet
+        {
+            int count = 0;
+            foreach (char ch in collection) { 
+                Console.Write($"{ch} ");
+                count++;
+            }
+            Console.WriteLine("\nNumber of items: {0}", count);
+        }
+
         private static void SortedSetApp2()
         {
             // SortedSet set operations
